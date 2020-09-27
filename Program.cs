@@ -8,6 +8,8 @@ namespace EmployeeWageProblem
         {
             int totalDailyWage = 0, totalPartTimeWage = 0;
             int workingDaysInMonth = 20;
+            int totalWorkingHours = 0;
+            bool flag = false;
             for (int i = 1; i <= workingDaysInMonth; i++)
             {
                 int isPresent = Attendance();
@@ -17,14 +19,31 @@ namespace EmployeeWageProblem
                     case 0:
                         break;
                     case 1:
+                        totalWorkingHours += 8;
+                        if (totalWorkingHours > 100)
+                        {
+                            flag = true;
+                            break;
+                        }
                         dailyEmployeeWage = DailyEmployeeWage();
                         int doPartTime = Attendance();
                         if (doPartTime == 1)
+                        {
+                            totalWorkingHours += 4;
+                            if (totalWorkingHours > 100)
+                            {
+                                flag = true;
+                                break;
+                            }
                             partTimeWage = PartTimeWage();
+                        }
+
                         break;
                     default:
                         break;
                 }
+                if (flag)
+                    break;
                 totalDailyWage += dailyEmployeeWage;
                 totalPartTimeWage += partTimeWage;
             }
