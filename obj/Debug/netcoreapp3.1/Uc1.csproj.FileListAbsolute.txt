@@ -1,0 +1,13 @@
+C:\Users\MUKHESH\source\repos\Uc1\bin\Debug\netcoreapp3.1\Uc1.exe
+C:\Users\MUKHESH\source\repos\Uc1\bin\Debug\netcoreapp3.1\Uc1.deps.json
+C:\Users\MUKHESH\source\repos\Uc1\bin\Debug\netcoreapp3.1\Uc1.runtimeconfig.json
+C:\Users\MUKHESH\source\repos\Uc1\bin\Debug\netcoreapp3.1\Uc1.runtimeconfig.dev.json
+C:\Users\MUKHESH\source\repos\Uc1\bin\Debug\netcoreapp3.1\Uc1.dll
+C:\Users\MUKHESH\source\repos\Uc1\bin\Debug\netcoreapp3.1\Uc1.pdb
+C:\Users\MUKHESH\source\repos\Uc1\obj\Debug\netcoreapp3.1\Uc1.csprojAssemblyReference.cache
+C:\Users\MUKHESH\source\repos\Uc1\obj\Debug\netcoreapp3.1\Uc1.AssemblyInfoInputs.cache
+C:\Users\MUKHESH\source\repos\Uc1\obj\Debug\netcoreapp3.1\Uc1.AssemblyInfo.cs
+C:\Users\MUKHESH\source\repos\Uc1\obj\Debug\netcoreapp3.1\Uc1.csproj.CoreCompileInputs.cache
+C:\Users\MUKHESH\source\repos\Uc1\obj\Debug\netcoreapp3.1\Uc1.dll
+C:\Users\MUKHESH\source\repos\Uc1\obj\Debug\netcoreapp3.1\Uc1.pdb
+C:\Users\MUKHESH\source\repos\Uc1\obj\Debug\netcoreapp3.1\Uc1.genruntimeconfig.cache
