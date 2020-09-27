@@ -7,17 +7,21 @@ namespace EmployeeWageProblem
         static void Main(string[] args)
         {
             int isPresent = Attendance();
-            if (isPresent == 0)
-                Console.WriteLine("Employee is Absent!");
-            else
-                Console.WriteLine("Employee is Present!");
             int dailyEmployeeWage = 0, partTimeWage = 0;
-            if (isPresent == 1)
+            switch (isPresent)
             {
-                dailyEmployeeWage = DailyEmployeeWage();
-                int doPartTime = Attendance();
-                if (doPartTime == 1)
-                    partTimeWage = PartTimeWage();
+                case 0:
+                    Console.WriteLine("Employee is Absent!");
+                    break;
+                case 1:
+                    Console.WriteLine("Employee is Present!");
+                    dailyEmployeeWage = DailyEmployeeWage();
+                    int doPartTime = Attendance();
+                    if (doPartTime == 1)
+                        partTimeWage = PartTimeWage();
+                    break;
+                default:
+                    break;
             }
             Console.WriteLine("Daily Employee Wage : {0}", dailyEmployeeWage);
             Console.WriteLine("Part Time Employee Wage : {0}", partTimeWage);
