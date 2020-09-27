@@ -6,25 +6,31 @@ namespace EmployeeWageProblem
     {
         static void Main(string[] args)
         {
-            int isPresent = Attendance();
-            int dailyEmployeeWage = 0, partTimeWage = 0;
-            switch (isPresent)
+            int totalDailyWage = 0, totalPartTimeWage = 0;
+            int workingDaysInMonth = 20;
+            for (int i = 1; i <= workingDaysInMonth; i++)
             {
-                case 0:
-                    Console.WriteLine("Employee is Absent!");
-                    break;
-                case 1:
-                    Console.WriteLine("Employee is Present!");
-                    dailyEmployeeWage = DailyEmployeeWage();
-                    int doPartTime = Attendance();
-                    if (doPartTime == 1)
-                        partTimeWage = PartTimeWage();
-                    break;
-                default:
-                    break;
+                int isPresent = Attendance();
+                int dailyEmployeeWage = 0, partTimeWage = 0;
+                switch (isPresent)
+                {
+                    case 0:
+                        break;
+                    case 1:
+                        dailyEmployeeWage = DailyEmployeeWage();
+                        int doPartTime = Attendance();
+                        if (doPartTime == 1)
+                            partTimeWage = PartTimeWage();
+                        break;
+                    default:
+                        break;
+                }
+                totalDailyWage += dailyEmployeeWage;
+                totalPartTimeWage += partTimeWage;
             }
-            Console.WriteLine("Daily Employee Wage : {0}", dailyEmployeeWage);
-            Console.WriteLine("Part Time Employee Wage : {0}", partTimeWage);
+            Console.WriteLine("Total Daily Employee Wage : {0}", totalDailyWage);
+            Console.WriteLine("Total Part Time Employee Wage : {0}", totalPartTimeWage);
+            Console.WriteLine("Total Wage : {0}", totalDailyWage + totalPartTimeWage);
         }
         /// <summary>
         /// Attendance function returns 0 or 1 randomly.
