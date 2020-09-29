@@ -1,22 +1,27 @@
 ﻿using System;
+using System.Collections;
 
 namespace Employee_Wage_Computation1
 {
     class Program
     {
 
+
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Employee Wage Computation Program");
-
+            Hashtable wagesForCompanies = new Hashtable();  // Hash table to store the wages of different companies          
             Program program = new Program();
-            program.CalculateTotalWage("Amazon", 40, 25, 100);
-            program.CalculateTotalWage("flipkart", 60, 15, 80);
+            wagesForCompanies["Reliance"] = program.CalculateTotalWage("Reliance", 40, 25, 100);
+            wagesForCompanies["Flipkart"] = program.CalculateTotalWage("flipkart", 60, 15, 80);
+            Console.WriteLine("Type the company name to find total wages"); //Searching for wage of a company
+            string searchCompany = Console.ReadLine();
+            Console.WriteLine("Total wage of {0} is {1}", searchCompany, wagesForCompanies[searchCompany]);
 
 
         }
 
-        public void CalculateTotalWage(string companyName, int wagePerHour, int maxWorkingDays, int maxWorkingHours) //Method to calculate total wage
+        public int CalculateTotalWage(string companyName, int wagePerHour, int maxWorkingDays, int maxWorkingHours) //Method to calculate total wage
         {
 
             //variables
@@ -40,6 +45,7 @@ namespace Employee_Wage_Computation1
             }
             totalMonthlyWage = totalEmpWorkHours * wagePerHour;
             Console.WriteLine("The monthly wage for {1} is {0}", totalMonthlyWage, companyName);
+            return totalMonthlyWage;
 
 
         }
