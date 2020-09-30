@@ -6,9 +6,9 @@ namespace EmpWage
 {
     class EmpWageCalculator
     {
-        List<Company> companies = new List<Company>();
-        int numOfCompany = 0;
-        int totalNumOfCompanies = 0;
+        List<Company> companyList = new List<Company>();
+        Dictionary<string, Company> searchByCompany = new Dictionary<string, Company>();
+
 
         /// <summary>
         /// Adds the company details.
@@ -20,22 +20,24 @@ namespace EmpWage
         public void AddCompanyDetails(string companyName, int wagePerHour, int maxWorkingDays, int maxWorkingHours)
         {
             Company newCompany = new Company(companyName, wagePerHour, maxWorkingDays, maxWorkingHours);
-            companies.Add(newCompany);
-            numOfCompany++;
-            totalNumOfCompanies = numOfCompany;
-
+            companyList.Add(newCompany);
+            searchByCompany.Add(companyName, newCompany);
         }
-       
+
+
+
+        /// <summary>
+        /// Calculates the total emp wage.
+        /// </summary>
         public void CalculateTotalEmpWage()
         {
-            for (int companyNumber = 0; companyNumber < totalNumOfCompanies; companyNumber++)
+            foreach (Company company in companyList)
             {
-                int totalWage = CalculateTotalEmpWage(companies[companyNumber]);
-                companies[companyNumber].saveTotalWage(totalWage);
-                Console.WriteLine("The total monthly wage of {0} company is {1}", companies[companyNumber].companyName, totalWage);
+                company.saveTotalWage(CalculateTotalEmpWage(company));
+                Console.WriteLine("The total monthly wage of {0} company is {1}\n", company.companyName, company.totalEmpWage);
             }
         }
-        private int CalculateDailyEmpHours() 
+        private int CalculateDailyEmpHours() //Method to calculate daily work hours of employee
         {
             // constants
             const int IS_FULL_TIME = 1;
@@ -49,12 +51,12 @@ namespace EmpWage
             {
                 case IS_FULL_TIME:
 
-                    empHours = 8;      
+                    empHours = 8;       //emp present for full day on that working day
                     break;
 
                 case IS_PART_TIME:
 
-                    empHours = 4;     
+                    empHours = 4;      //emp present for part time on that working day
                     break;
 
                 default:
@@ -65,28 +67,45 @@ namespace EmpWage
             return empHours;
         }
 
-        private int CalculateTotalEmpWage(Company company) 
+        private int CalculateTotalEmpWage(Company company) //Method to calculate total wage
         {
 
-            
+            //variables
             int dailyWage = 0;
             int dailyEmpHours = 0;
             int day = 0;
             int totalEmpWorkHours = 0;
             int totalMonthlyWage;
+
             while (totalEmpWorkHours < company.maxWorkingHours && day < company.maxWorkingDays)
             {
                 day++;                                       // Calculates No of working days till now in month
                 dailyEmpHours = CalculateDailyEmpHours();    // Calculates No of working hours daily
+                dailyWage = dailyEmpHours * company.wagePerHour;
+                company.saveDailyWage(dailyWage);
 
                 // calculates total working hours
+
                 if (totalEmpWorkHours + dailyEmpHours <= company.maxWorkingHours)
                     totalEmpWorkHours += dailyEmpHours;
                 else
                     totalEmpWorkHours = company.maxWorkingHours;
             }
+
             totalMonthlyWage = totalEmpWorkHours * company.wagePerHour;
             return totalMonthlyWage;
+        }
+
+        public void GetWagesOfCompany(string companyName)
+        {
+            Console.WriteLine("The wages of the company {0} queried are as below:", companyName);
+            Company company = searchByCompany[companyName];
+
+            foreach (KeyValuePair<int, int> dailyWage in company.dailyWage)
+                Console.WriteLine("The daily wage of employee for day {0} is {1}", dailyWage.Key, dailyWage.Value);
+
+            Console.WriteLine("\nThe total monthly wage of {0} company is {1}", companyName, company.totalEmpWage);
+
         }
     }
 
