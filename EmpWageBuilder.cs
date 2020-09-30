@@ -26,9 +26,7 @@ namespace EmpWage
 
 
 
-        /// <summary>
-        /// Calculates the total emp wage.
-        /// </summary>
+        
         public void CalculateTotalEmpWage()
         {
             foreach (Company company in companyList)
@@ -39,11 +37,11 @@ namespace EmpWage
         }
         private int CalculateDailyEmpHours() //Method to calculate daily work hours of employee
         {
-            // constants
+            
             const int IS_FULL_TIME = 1;
             const int IS_PART_TIME = 2;
 
-            //variables
+           
             int empHours = 0;
             Random random = new Random();
             int workType = random.Next(0, 3);
@@ -70,7 +68,7 @@ namespace EmpWage
         private int CalculateTotalEmpWage(Company company) //Method to calculate total wage
         {
 
-            //variables
+           
             int dailyWage = 0;
             int dailyEmpHours = 0;
             int day = 0;
