@@ -4,7 +4,7 @@ using System.Text;
 
 namespace EmpWage
 {
-    class EmpWageCalculator
+    class EmpWageBuilder
     {
         List<Company> companyList = new List<Company>();
         Dictionary<string, Company> searchByCompany = new Dictionary<string, Company>();
@@ -94,7 +94,7 @@ namespace EmpWage
             return totalMonthlyWage;
         }
 
-        public void GetWagesOfCompany(string companyName)
+        public void GetWagesOfCompany(string companyName) //returns wages of entered company
         {
             Console.WriteLine("The wages of the company {0} queried are as below:", companyName);
             Company company = searchByCompany[companyName];
