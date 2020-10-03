@@ -9,16 +9,16 @@ namespace EmpWage
         {
             Console.WriteLine("Welcome to Employee Wage Computation Program");
 
-            EmpWageCalculator empWageCalculator = new EmpWageCalculator();
+            EmpWageBuilder empWageBuilder = new EmpWageBuilder();
 
             //Add the details of all the companyList first
-            empWageCalculator.AddCompanyDetails("Reliance", 60, 20, 100);
-            empWageCalculator.AddCompanyDetails("Flipkart", 40, 20, 80);
+            empWageBuilder.AddCompanyDetails("Reliance", 60, 20, 100);
+            empWageBuilder.AddCompanyDetails("Amazon", 50, 15, 80);
 
             // Calculate the employee wage of all the companyList
-            empWageCalculator.CalculateTotalEmpWage();
+            empWageBuilder.CalculateTotalEmpWage();
 
-            empWageCalculator.GetWagesOfCompany("Reliance");
+            empWageBuilder.GetWagesOfCompany("Reliance");
 
         }
 
